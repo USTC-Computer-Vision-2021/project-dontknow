@@ -14,4 +14,8 @@
 ## 运行说明
 
 ## 引用参考
+### 理论和代码引用
 https://github.com/jayantjain100/Augmented-Reality
+
+### 模型来源
+https://www.aigei.com/
