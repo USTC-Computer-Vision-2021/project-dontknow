@@ -1,5 +1,5 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6627215&assignment_repo_type=AssignmentRepo)
-# 题目
+# 题目   基于增强现实实现虚拟时钟和动画播放
 成员及分工
 + 徐晋 PB18061339：寻找素材 obj建模 数学原理 代码调试 readme写作 
 + 马龙 PB18061359：寻找素材 python代码写作与调试 实验设计 readme写作 
