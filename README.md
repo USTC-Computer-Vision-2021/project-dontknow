@@ -21,12 +21,16 @@ marker检测过程由以下两个主要步骤构成：
 
 ### 姿态估计
 上一步结束之后得到的是匹配的特征点：
+'''
 
 src_pts, dst_pts, found = find_pattern_aruco(image, aruco_marker, sigs)
+'''
 
 所以在这里只需要计算出匹配点之间的变换矩阵即可，使用：
+'''
 
 H, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)函数
+'''
 
 除了marker的姿态，同时还考虑了摄像头的固有姿态，利用标定程序获得摄像头的姿态矩阵A。但实际上我们使用的是笔记本摄像头，姿态并不总是固定，同时笔记本摄像头的两个轴又是固定的，只有一个自由度，所以这一部分影响并不大。
 ### 模型旋转
