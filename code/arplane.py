@@ -1,15 +1,36 @@
-
 import aruco_module as aruco
 from my_constants import *
 from utils import get_extended_RT
 import time
-
 import cv2
-
 import numpy as np
 import math
 
+#摄像头姿态矩阵
+A = [[1019.37187, 0, 618.709848], [0, 1024.2138, 327.280578], [0, 0, 1]] 
+A = np.array(A)
 
+
+def get_extended_RT(A, H):
+	#将摄像头姿态估计和marker的变换矩阵进行综合 
+	
+	H = np.float64(H) #数据类型转换
+	A = np.float64(A)
+	R_12_T = np.linalg.inv(A).dot(H)
+
+	r1 = np.float64(R_12_T[:, 0]) 
+	r2 = np.float64(R_12_T[:, 1]) 
+	T = R_12_T[:, 2] 
+	
+	norm = np.float64(math.sqrt(np.float64(np.linalg.norm(r1)) * np.float64(np.linalg.norm(r2))))
+	
+	r3 = np.cross(r1,r2)/(norm)
+	R_T = np.zeros((3, 4))
+	R_T[:, 0] = r1
+	R_T[:, 1] = r2 
+	R_T[:, 2] = r3 
+	R_T[:, 3] = T
+	return R_T
 
 
 
