@@ -18,6 +18,9 @@
 ## 引用参考
 ### 理论和代码引用
 https://github.com/jayantjain100/Augmented-Reality
+
 https://github.com/juangallostra/augmented-reality
 ### 模型来源
 https://www.aigei.com/
+
+部分自建
