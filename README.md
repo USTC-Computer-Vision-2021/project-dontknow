@@ -42,19 +42,23 @@ H, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)函数
 
 若绕直线旋转，该直线在xoy平面上的投影坐标为（x,y），则坐标变换公式如下：
 
+```
 x'-x0=(x-x0)cosa-(y-y0)sina
 
 y'-y0=(x-x0)sina+(y-y0)cosa
+```
 
 z坐标不变。
 
 其中旋转角度由当前读取到的系统时间确定，根据时、分、秒算出对应指针的旋转角度：
 
+```
 secangle = now.second * 360 / 60 * math.pi / 180
 
 minangle = now.minute * 360 / 60 * math.pi / 180 + secangle / 60
 
 hangle = (now.hour % 12) * 360 / 12 * math.pi / 180 + minangle / 12
+```
 
 
 ## 代码实现
