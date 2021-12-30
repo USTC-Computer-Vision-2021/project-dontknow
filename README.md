@@ -21,8 +21,8 @@ marker检测过程由以下两个主要步骤构成：
 
 ### 姿态估计
 上一步结束之后得到的是匹配的特征点：
-'''
 
+'''python
 src_pts, dst_pts, found = find_pattern_aruco(image, aruco_marker, sigs)
 '''
 
