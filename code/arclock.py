@@ -1,4 +1,3 @@
-
 import aruco_module as aruco
 from my_constants import *
 from utils import get_extended_RT
@@ -8,20 +7,22 @@ import datetime
 import numpy as np
 import math
 
+#摄像头姿态矩阵
+A = [[1019.37187, 0, 618.709848], [0, 1024.2138, 327.280578], [0, 0, 1]] 
+A = np.array(A)
+
 
 def get_extended_RT(A, H):
-	#finds r3 and appends
-	# A is the intrinsic mat, and H is the homography estimated
-	H = np.float64(H) #for better precision
+	#将摄像头姿态估计和marker的变换矩阵进行综合 
+	
+	H = np.float64(H) #数据类型转换
 	A = np.float64(A)
 	R_12_T = np.linalg.inv(A).dot(H)
 
-	r1 = np.float64(R_12_T[:, 0]) #col1
-	r2 = np.float64(R_12_T[:, 1]) #col2
-	T = R_12_T[:, 2] #translation
+	r1 = np.float64(R_12_T[:, 0]) 
+	r2 = np.float64(R_12_T[:, 1]) 
+	T = R_12_T[:, 2] 
 	
-	#ideally |r1| and |r2| should be same
-	#since there is always some error we take square_root(|r1||r2|) as the normalization factor
 	norm = np.float64(math.sqrt(np.float64(np.linalg.norm(r1)) * np.float64(np.linalg.norm(r2))))
 	
 	r3 = np.cross(r1,r2)/(norm)
